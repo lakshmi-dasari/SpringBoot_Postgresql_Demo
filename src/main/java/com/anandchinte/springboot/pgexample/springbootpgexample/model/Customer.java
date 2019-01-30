@@ -9,71 +9,106 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "project_one")
+@Table(name = "anand_test_table")
 public class Customer {
 	
 	
 	private int id;
 	private String firstname;
-//	private String lastname;
-//	private String emailId;
+	private String lastname;
+	private String email;
+	private String password;
+	private String dob;
+	private String gender;
 	
 	
-
-    public Customer() {
-    }
-	
-	
-
-	
-//	public Customer(String firstname, String lastname, String emailId) {
-//		
-//		this.firstname = firstname;
-//		this.lastname = lastname;
-//		this.emailId = emailId;
-//	}
-	
-	public Customer(String firstname) {
-		
-		this.firstname = firstname;
-
-	}
-	
-	@Id
-	@Column(name = "id", nullable = false)
+	@Id @Column(name="id", nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getId() {
 		return id;
 	}
-	
 	public void setId(int id) {
 		this.id = id;
 	}
 	
-	@Column(name = "name", nullable = false)
+	@Column(name="firstname", nullable=false)
 	public String getFirstname() {
 		return firstname;
 	}
-	
 	public void setFirstname(String firstname) {
 		this.firstname = firstname;
 	}
-//	public String getLastname() {
-//		return lastname;
-//	}
-//	public void setLastname(String lastname) {
-//		this.lastname = lastname;
-//	}
-//	public String getEmailId() {
-//		return emailId;
-//	}
-//	public void setEmailId(String emailId) {
-//		this.emailId = emailId;
-//	}
 	
-	
-	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstname + "]";
+	@Column(name="lastname", nullable=false)
+	public String getLastname() {
+		return lastname;
 	}
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+	
+	@Column(name="email", nullable=false)
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	@Column(name="password", nullable=false)
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
+	@Column(name="dob", nullable=false)
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	
+	@Column(name="gender", nullable=false)
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	
+	
+	
+	
+	public Customer(int id, String firstname, String lastname, String email, String password, String dob,
+			String gender) {
+		super();
+		this.id = id;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+		this.dob = dob;
+		this.gender = gender;
+	}
+	
+	public Customer() {
+		
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+				+ ", password=" + password + ", dob=" + dob + ", gender=" + gender + "]";
+	}
+	
+	
+	
+	
+	
 	
 
 }

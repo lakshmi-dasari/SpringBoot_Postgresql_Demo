@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.anandchinte.springboot.pgexample.springbootpgexample.exception.ResourceNotFoundException;
 import com.anandchinte.springboot.pgexample.springbootpgexample.model.Customer;
 import com.anandchinte.springboot.pgexample.springbootpgexample.repo.CustomerRepository;
+import com.anandchinte.springboot.pgexample.springbootpgexample.repo.CustomRepo;
 
 
 
@@ -28,14 +29,27 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+	@Autowired
+	private CustomRepo customRepo;
+	
 	
 	@GetMapping("/customers")
 	public List<Customer> getAllCustomers(){
-		
 		return customerRepository.findAll();
 	}
 	
 	
+	@PostMapping("/customers")
+	public Customer CreateUser(@Valid @RequestBody Customer customers) {
+		return customerRepository.save(customers);
+		
+	}
+	
+	//@CrossOrigin(origins = "*")
+	@GetMapping("/customers/{email}")
+	public List<Customer> getPasswordByEmail(@PathVariable(value="email") String email){
+		return customRepo.getPasswordByUsername(email);
+	}
 	
 	
 
